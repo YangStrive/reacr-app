@@ -1,5 +1,5 @@
 
-export default [
+const router = [
   {
     path: '/',
     element: require('../pages/home').default,
@@ -7,5 +7,11 @@ export default [
   {
     path:'/about',
     element: require('../pages/about').default,
+  },
+  {
+    path:'/antd3Form',
+    element: require('../pages/antd3Form').default,
   }
 ]
+
+export default router;
