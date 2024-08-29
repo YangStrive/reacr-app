@@ -1,0 +1,15 @@
+.form-item{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.form-item label{
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+.form-btn{
+  margin-left: 280px;
+  margin-top: 20px;
+}

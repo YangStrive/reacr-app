@@ -4,7 +4,10 @@ const Form = (WrappedComponents) => {
   return class extends Component {
     constructor(props){
       super(props);
-      this.state = {};
+      this.state = {
+        data:{},
+        error:{}
+      };
       this.options = {};
     }
 
@@ -13,9 +16,9 @@ const Form = (WrappedComponents) => {
       return (InputComponent) => {
         return React.cloneElement(InputComponent, {
           name: field,
-          value: this.state[field] || '',
+          value: this.state['data'][field] || '',
           onChange: this.handleChange,
-          ...option
+          error: this.state['error'][field]
         })
       }
     };
@@ -23,32 +26,37 @@ const Form = (WrappedComponents) => {
     handleChange = (e) => {
       let {name, value} = e.target;
       this.setState({
-        [name]: value
+        data: {
+          ...this.state['data'],
+          [name]: value
+        }
       })
     };
 
     vaildateFields = (cb) => {
-      let err = [];
+      let err = {};
       for(let field in this.options){
         if(this.options[field].rules){
           this.options[field].rules.forEach(rule => {
-            if(rule.required && !this.state[field]){
-              err.push({
-                [field]: rule.message
-              })
+            if(rule.required && !this.state['data'][field]){
+              err[field] = rule.message
             }
           })
         }
       }
-      if(err.length){
+      this.setState({
+        error: err,
+      })
+      if(Object.keys(err).length){
+        console.log('err', err)
         cb(err)
       }else{
-        cb(null, this.state)
+        cb(null, this.state['data'])
       }
     };
 
     getFieldValues = () => {
-      return this.state;
+      return this.state['data'];
     };
 
     getFiledValue = (field) => {
@@ -56,11 +64,14 @@ const Form = (WrappedComponents) => {
         console.error('resetFieldsValue 参数只能是字符串或者数组')
         return;
       }
-      return this.state[field]
+      return this.state['data'][field]
     };
 
     resetFields = () => {
-      this.setState({});
+      this.setState({
+        data: {},
+        error: {}
+      });
     };
 
     resetFieldsValue = (fields) => {
@@ -71,27 +82,23 @@ const Form = (WrappedComponents) => {
       }
 
       let newState = {};
-      for(let field in this.state){
+      for(let field in this.state['data']){
         if(fields.includes(field)){
-          newState[field] = this.state[field]
+          newState[field] = this.state['data'][field]
         }
       }
       this.setState(newState);
     }
-
-
 
     getForm = () => {
       return {
         getFieldDecorator: this.getFieldDecorator,
         vaildateFields: this.vaildateFields,
         getFieldValues: this.getFieldValues,
-        getFieldValue: this.getFieldValue,
+        getFieldValue: this.getFiledValue,
         resetFields: this.resetFields,
       }
     }
-
-
 
     render(){
       return <WrappedComponents {...this.props} {...this.getForm()}/>

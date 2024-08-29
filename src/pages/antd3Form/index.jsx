@@ -1,4 +1,6 @@
 import Form from './components/form';
+import Input from './components/input';
+import './index.css';
 
 const Antd3Form = (props) => {
   let {
@@ -6,29 +8,40 @@ const Antd3Form = (props) => {
   } = props;
   return (
     <form>
-      <div>
+      <div className='form-item'>
         <label>姓名：</label>
         {getFieldDecorator('name', {
           rules: [{ required: true, message: '请输入姓名' }]
-        })(<input type="text" />)}
+        })(<Input type="text" />)}
       </div>
 
-      <div>
+      <div className='form-item'>
         <label>年龄：</label>
         {getFieldDecorator('age', {
           rules: [{ required: true, message: '请输入年龄' }]
-        })(<input type="text" />)}
+        })(<Input type="text" />)}
       </div>
-      <button type="button" onClick={() => {
-        props.vaildateFields((err, values) => {
-          if(err){
-            console.log(err)
-          }else{
-            console.log(values)
-          }
-        })
-      }
-      }>提交</button>
+      <div className='form-item'>
+        <button type="button" onClick={() => {
+          console.log(props.getFieldValues())
+          console.log(props.getFieldValue('name'))
+        }
+        }>获取值</button>
+        <button type="button" onClick={() => {
+          props.vaildateFields((err, values) => {
+            if(err){
+              console.log(err)
+            }else{
+              console.log(values)
+            }
+          })
+        }
+        }>提交</button>
+        <button type="button" onClick={() => {
+          props.resetFields()
+        }
+        }>重置</button>
+      </div>
     </form>
   )
 }
