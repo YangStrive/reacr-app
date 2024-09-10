@@ -15,18 +15,24 @@ const initRouter = (routerConfig) => {
   })
 }
 
+const initNav = (routerConfig) => {
+  return routerConfig.map((route, index) => {
+    let {path} = route;
+    return (
+      <li key={index}>
+        <Link to={path}>{path}</Link>
+      </li>
+    )
+  })
+}
+
 function App() {
   return (
     <div className="App">
       <Router>
         <Fragment>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
+          <ul className='nav-list'>
+            {initNav(routerConfig)}
           </ul>
           <Routes>
             {initRouter(routerConfig)}

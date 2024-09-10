@@ -41,6 +41,10 @@ const Antd3Form = (props) => {
           props.resetFields()
         }
         }>重置</button>
+        <button type="button" onClick={() => {
+          props.setFieldsValues({name: '张三', age: 18})
+        }
+        }>设置值</button>
       </div>
     </form>
   )

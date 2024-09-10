@@ -11,6 +11,10 @@ const router = [
   {
     path:'/antd3Form',
     element: require('../pages/antd3Form').default,
+  },
+  {
+    path:'/antd4Form',
+    element: require('../pages/antd4Form').default,
   }
 ]
 

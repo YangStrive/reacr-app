@@ -88,6 +88,15 @@ const Form = (WrappedComponents) => {
         }
       }
       this.setState(newState);
+    };
+
+    setFieldsValues = (values) => {
+      this.setState({
+        data: {
+          ...this.state['data'],
+          ...values
+        }
+      })
     }
 
     getForm = () => {
@@ -97,6 +106,7 @@ const Form = (WrappedComponents) => {
         getFieldValues: this.getFieldValues,
         getFieldValue: this.getFiledValue,
         resetFields: this.resetFields,
+        setFieldsValues: this.setFieldsValues,
       }
     }
 
