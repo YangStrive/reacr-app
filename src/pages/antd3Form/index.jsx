@@ -3,6 +3,16 @@ import Input from './components/input';
 import './index.css';
 
 const Antd3Form = (props) => {
+  // TODO: 通过props获取getFieldDecorator等方法
+  // !: getFieldDecorator等方法是通过props传递进来的，但是在组件内部并没有使用，导致组件无法正常工作
+  // ?: 在组件内部使用getFieldDecorator等方法
+  // NOTE: 在组件内部使用getFieldDecorator等方法
+  // BUG: 在组件内部使用getFieldDecorator等方法
+  // bug: 在组件内部使用getFieldDecorator等方法
+  // todo: 在组件内部使用getFieldDecorator等方法
+  
+
+  // 
   let {
     getFieldDecorator,
   } = props;

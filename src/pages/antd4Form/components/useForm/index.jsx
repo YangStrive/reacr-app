@@ -5,10 +5,14 @@ class FromStore{
     this.store = {};
     this.fieldEntities = [];
     this.callbacks = {};
+    this.rules = [];
+    this.errors = {};
   }
 
   registerField = (name,entity) => {
-    this.fieldEntities.push({name,entity});
+    let {forceUpdate,rules = []} = entity;
+    this.fieldEntities.push({name,entity:forceUpdate});
+    this.rules.push({name,rules});
   }
 
   unregisterField = (name) => {
@@ -57,10 +61,38 @@ class FromStore{
     }
   }
 
+  //校验表单
+  validate = () => {
+    let errName = [];
+    this.rules.forEach(rule => {
+      let value = this.store[rule.name];
+      let {rules} = rule;
+      debugger
+      rules.forEach(item => {
+        if(item.required && !value){
+          errName.push(rule.name);
+          this.errors[rule.name] = item.message;
+        }
+      })
+    })
+    console.log(errName);
+
+    if(errName.length){
+      this.fieldEntities.forEach(entity => {
+        if(errName.includes(entity.name)){
+          entity['entity']();
+        }
+      })
+
+      return this.errors;
+    }else{
+      return true;
+    }
+  }
+
+
   getFrom = () => {
     return {
-      setStore: this.setStore,
-      getStore: this.getStore,
       getFieldsValue: this.getFieldsValue,
       getFieldValue: this.getFieldValue,
       setFieldsValue: this.setFieldsValue,
@@ -69,6 +101,8 @@ class FromStore{
       unregisterField: this.unregisterField,
       submit: this.submit,
       setCallback: this.setCallback,
+      validate: this.validate,
+      errors: this.errors
     }
   }
 }
