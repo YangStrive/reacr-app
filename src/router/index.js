@@ -15,6 +15,10 @@ const router = [
   {
     path:'/antd4Form',
     element: require('../pages/antd4Form').default,
+  },
+  {
+    path:'/redux',
+    element: require('../pages/redux').default,
   }
 ]
 
