@@ -7,8 +7,9 @@ const ReduxPage = () => {
 
 
   useEffect(() => {
-    const unsubscribe = store.subscribe(() => {
-      up(o1 + 1);
+    console.log('store', 999);
+   const unsubscribe = store.subscribe(() => {
+      up((o1) => o1 + 1);
       console.log('store.getState()', store.getState());
     });
 
@@ -21,7 +22,7 @@ const ReduxPage = () => {
 
   return (
     <div>
-      <h1>Redux Page{o1}</h1>
+      <h1>Redux Page</h1>
       <div>
         {store.getState().count}
         <button onClick={() => store.dispatch({type: 'add'})}>add</button>

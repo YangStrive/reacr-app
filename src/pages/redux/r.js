@@ -7,7 +7,6 @@ const  createStore = (reducer, preloadedState, enhancer) => {
   const dispatch = action => {
     currentStatus = reducer(currentStatus, action);
     currentListeners.forEach(listener => listener());
-    console.log('currentStatus', currentStatus);
     return action;
   }
 

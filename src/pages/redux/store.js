@@ -1,6 +1,5 @@
 import createStore from './r.js';
 
-console.log(createStore);
 const currentStatus = {
   count: 0,
 };
