@@ -1,4 +1,8 @@
-const  createStore = (reducer, preloadedState, enhancer) => {
+const  createStore = (reducer, enhancer) => {
+  if (enhancer) {
+    return enhancer(createStore)(reducer);
+  }
+  
   let currentStatus;
   let currentListeners = [];
 

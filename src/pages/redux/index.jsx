@@ -27,6 +27,17 @@ const ReduxPage = () => {
         {store.getState().count}
         <button onClick={() => store.dispatch({type: 'add'})}>add</button>
         <button onClick={() => store.dispatch({type: 'dec'})}>dec</button>
+        <button
+          onClick={() =>
+            store.dispatch((dispatch) => {
+              setTimeout(() => {
+                dispatch({ type: 'add' });
+              }, 1000);
+            })
+          }
+        >
+          async add
+        </button>
       </div>
     </div>
   );

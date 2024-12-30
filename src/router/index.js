@@ -19,6 +19,10 @@ const router = [
   {
     path:'/redux',
     element: require('../pages/redux').default,
+  },
+  {
+    path:'/noRedux',
+    element: require('../pages/noRedux').default,
   }
 ]
 
