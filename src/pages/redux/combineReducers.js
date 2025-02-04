@@ -7,7 +7,6 @@ export default function combineReducers(reducers) {
       nextState = reducer(state, action);
     }
 
-
     return nextState;
   };
 }
