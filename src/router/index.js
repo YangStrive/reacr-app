@@ -23,6 +23,10 @@ const router = [
   {
     path:'/noRedux',
     element: require('../pages/noRedux').default,
+  },
+  {
+    path:'/useReducer',
+    element: require('../pages/useReducer').default,
   }
 ]
 
