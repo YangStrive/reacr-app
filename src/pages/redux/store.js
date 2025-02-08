@@ -1,4 +1,4 @@
-import createStore from './r.js';
+import createStore from './creatStore.js';
 import applyMiddleware from './applyMiddleware.js';
 import logger from './logger.js';
 import Thunk from './thunk.js';

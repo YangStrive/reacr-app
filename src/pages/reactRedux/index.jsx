@@ -1,0 +1,19 @@
+
+import { Provider } from 'react-redux'
+import {
+  Child1,
+  Child2,
+  Child3
+} from './components/index'
+import store from './store'
+const ReactReduxPage = () => {
+  return <Provider store={store}>
+    <>
+      <Child1 hobby="react" />
+      <Child2 />
+      <Child3 />
+    </>
+  </Provider>
+}
+
+export default ReactReduxPage

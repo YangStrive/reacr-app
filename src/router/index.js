@@ -27,6 +27,10 @@ const router = [
   {
     path:'/useReducer',
     element: require('../pages/useReducer').default,
+  },
+  {
+    path:'/reactRedux',
+    element: require('../pages/reactRedux').default,
   }
 ]
 
