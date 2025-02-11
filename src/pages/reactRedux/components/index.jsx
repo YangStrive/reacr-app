@@ -1,5 +1,6 @@
 
-import { useSelector, useDispatch } from 'react-redux'
+//import { useDispatch } from 'react-redux'
+import { useSelector,useDispatch } from '../cmRedux'
 
 const Child1 = (props) => {
   const name = useSelector(state => state.name)

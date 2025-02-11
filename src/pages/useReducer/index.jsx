@@ -20,11 +20,24 @@ export default function UseReducer() {
 
   useEffect(() => {
     console.log('useEffect'); 
+    //中断五秒钟
+    let start = performance.now();
+    while(performance.now() - start < 5000){
+      //空循环
+    }
+    console.log('useEffect end');
   }, [state]);
 
-  useLayoutEffect(() => {
-    console.log('useLayoutEffect');
-  }, [state]);
+  // useLayoutEffect(() => {
+  //   console.log('useLayoutEffect');
+  //   //中断五秒钟
+  //   let start = performance.now();
+  //   while(performance.now() - start < 5000){
+  //     //空循环
+  //   }
+  //   console.log('useLayoutEffect end');
+
+  // }, [state]);
 
   return (
     <div>

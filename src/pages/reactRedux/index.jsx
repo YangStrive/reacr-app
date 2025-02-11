@@ -1,5 +1,6 @@
 
-import { Provider } from 'react-redux'
+//import { Provider } from 'react-redux'
+import { Provider } from './cmRedux';
 import {
   Child1,
   Child2,
