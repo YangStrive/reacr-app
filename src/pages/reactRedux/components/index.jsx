@@ -1,6 +1,7 @@
 
 //import { useDispatch } from 'react-redux'
-import { useSelector,useDispatch } from '../cmRedux'
+import React from 'react'
+import { useSelector,useDispatch, connect } from '../cmRedux'
 
 const Child1 = (props) => {
   const name = useSelector(state => state.name)
@@ -20,8 +21,27 @@ const Child3 = () => {
   </div>
 }
 
+//使用类组件
+class Child4 extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  
+  render() {
+    return <div>
+      <p>name: {this.props.name}</p>
+      <p>age: {this.props.age}</p>
+      <button onClick={() => this.props.dispatch({type: 'changeName'})}>修改Name</button>
+      <button onClick={() => this.props.dispatch({type: 'changeAge'})}>修改Age</button>
+    </div>
+  }
+}
+
+const Child5 = connect(state => state)(Child4)
+
 export {
   Child1,
   Child2,
-  Child3
+  Child3,
+  Child5
 }
