@@ -31,6 +31,14 @@ const router = [
   {
     path:'/reactRedux',
     element: require('../pages/reactRedux').default,
+  },
+  {
+    path:'/reactToolkit',
+    element: require('../pages/reactToolkit').default,
+  },
+  {
+    path:'/zustand',
+    element: require('../pages/zustand').default,
   }
 ]
 
