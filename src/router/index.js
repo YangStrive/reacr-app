@@ -39,6 +39,10 @@ const router = [
   {
     path:'/zustand',
     element: require('../pages/zustand').default,
+  },
+  {
+    path:'/useRedux',
+    element: require('../pages/useRedux').default,
   }
 ]
 
